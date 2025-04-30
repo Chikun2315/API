@@ -16,4 +16,9 @@ public class NewService {
        return save;
     }
 
+//Delete mapping code here
+
+    public void deleteById(Long id) {
+       newEntityRepository.deleteById(id);
+    }
 }

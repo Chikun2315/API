@@ -5,13 +5,16 @@ import com.API.service.NewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+
+
+
+//http://localhost:8080/api/v1/home
+
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/api/v1/home")
 public class newController {
 @Autowired
     private NewService newService;
@@ -25,4 +28,16 @@ public class newController {
             return new ResponseEntity<>(newEntity, HttpStatus.CREATED);
         }
     }
+//Delete mapping code
+    @DeleteMapping
+    public ResponseEntity<String>  deleteRegistration(
+            @RequestParam Long id
+    ){
+        newService.deleteById(id);
+        return new ResponseEntity<>("Data deleted successfully", HttpStatus.OK);
+    }
+
+
+
+
 }
